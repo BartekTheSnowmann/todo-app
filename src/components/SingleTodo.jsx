@@ -3,7 +3,7 @@ import { TrashIcon,CheckIcon, XMarkIcon, PencilSquareIcon } from '@heroicons/rea
 import { useDispatch } from 'react-redux'
 import { DeleteTodo } from '../features/TodoSlice'
 import Modal from './Modal'
-import { AnimatePresence, motion } from 'framer-motion'
+import {motion } from 'framer-motion'
 
 function SingleTodo({id, title, status, filter}) {
 
@@ -35,7 +35,7 @@ function SingleTodo({id, title, status, filter}) {
       layoutId={`item-${id}`}
       initial={{opacity:0,x:20}}
       animate={{opacity:1,x:0}}
-      exit={{opacity:0}}>
+      exit={{opacity:0, y:20}}>
         <div className='flex items-center justify-between text-xl h-14 p-2 bg-quaternary'>
           <div className='flex min-w-[70%] items-center gap-x-10'>
             <p>{status === 'Completed' ? <CheckIcon className='w-8 bg-secondary'/>:<XMarkIcon className='w-8 bg-[#D65DB1]'/>}</p>
