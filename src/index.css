@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
 
 @layer base
 {
   *{
-    font-family: 'Kanit';
+    font-family: 'Kanit', sans-serif;
   }
   button
   {
-    @apply px-4 py-1 my-2 bg-primary rounded-sm
+    @apply px-4 py-2 my-2 bg-primary rounded-sm
   }
   select, input 
   {
@@ -21,4 +21,18 @@
   {
     @apply w-0
   }
+}
+
+
+.AnimatedGradient  {
+  background: linear-gradient(332deg, #00c9a7, #00949c, #266074);
+  background-size: 600% 600%;
+
+  animation: AnimatedBackground 15s ease infinite;
+}
+
+@keyframes AnimatedBackground {
+  0%{background-position:0% 81%}
+  50%{background-position:100% 20%}
+  100%{background-position:0% 81%}
 }

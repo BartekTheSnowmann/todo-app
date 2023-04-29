@@ -53,24 +53,27 @@ function Modal({ModalType, ToggleModal, EditId}) {
     }
 
   return (
-    <AnimatePresence>
-    <div className='absolute -top-1/2 -left-1/2 translate-y-1/2 translate-x-1/2 h-screen w-screen bg-tertiary/80'>
+    <>
+      <motion.div className='absolute -top-1/2 -left-1/2 translate-y-1/2 translate-x-1/2 h-screen w-screen bg-tertiary/80'
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      exit={{opacity:0}}>
         <motion.div
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        exit={{opacity:0}}
+        initial={{opacity:0, y:-20}}
+        animate={{opacity:1, y:0}}
+        exit={{opacity:0, y:-20}}
         className='flex h-full justify-center items-center'>
             <form
             onSubmit={handleSubmit}
             className='flex flex-col justify-between items-center py-8 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] bg-quaternary rounded-xl shadow-lg shadow-tertiary '>
                 <div>
-                    <h1 className='text-white text-xl sm:text-3xl border-b-4 border-primary'>{ModalType} todo</h1>
+                    <h1 className='text-white text-xl sm:text-3xl uppercase'>{ModalType} todo</h1>
                 </div>
                 <div>
                     <input
                     className='w-[250px] sm:w-[300px] h-[40px]'
                     onChange={e=>setTitle(e.target.value)}
-                    type="text" placeholder='todo' /> 
+                    type="text" placeholder='Todo' /> 
                     <div className='py-2'>
                         <select
                         className='w-full mx-auto'
@@ -84,16 +87,17 @@ function Modal({ModalType, ToggleModal, EditId}) {
                 <div>
                     <button
                     onClick={handleSubmit}
-                    className='mx-2 bg-secondary rounded-sm'>{ModalType}</button>    
+                    className='mx-2 bg-primary hover:bg-secondary duration-300'>{ModalType}</button>    
                     <button
+                    type='button'
                     onClick={ToggleModal}
-                    className='bg-[#D65DB1] rounded-sm'>Cancel</button>    
+                    className=' bg-[#FF6998] hover:bg-[#D65DB1] duration-300'>Cancel</button>    
                 </div>           
             </form>
         </motion.div>
-    </div>
+    </motion.div>
         {ModalError && <AlertPopUp AlertType={AlertType} />}
-    </AnimatePresence>
+        </>
   )
 }
 

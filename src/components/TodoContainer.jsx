@@ -7,8 +7,8 @@ function TodoContainer({filter}) {
   const todos = useSelector(state=>state.todo.value)
 
   return (
-    <div className='bg-white h-[400px] p-2 overflow-y-scroll'>
-        {todos.length < 1 ? <h1 className='pt-4 text-xl'>No todos yet...</h1> : todos.map((item)=>
+    <div className='bg-white h-[400px] p-2 overflow-y-scroll shadow-lg'>
+        {todos.length < 1 ? <h1>No Todos Yet...</h1> : todos.map((item)=>
         (
           <SingleTodo
             filter={filter} 

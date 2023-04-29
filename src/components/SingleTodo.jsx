@@ -3,6 +3,7 @@ import { TrashIcon,CheckIcon, XMarkIcon, PencilSquareIcon } from '@heroicons/rea
 import { useDispatch } from 'react-redux'
 import { DeleteTodo } from '../features/TodoSlice'
 import Modal from './Modal'
+import { AnimatePresence, motion } from 'framer-motion'
 
 function SingleTodo({id, title, status, filter}) {
 
@@ -29,7 +30,12 @@ function SingleTodo({id, title, status, filter}) {
     {filter === status || filter === 'All'?
     <>
       {shoModal && <Modal ModalType='Edit' EditId={editedElement} ToggleModal={ToggleModal}/>}
-      <div className='w-full my-2 text-white'>
+      <motion.div className='w-full my-2 text-white'
+      layout
+      layoutId={`item-${id}`}
+      initial={{opacity:0,x:20}}
+      animate={{opacity:1,x:0}}
+      exit={{opacity:0}}>
         <div className='flex items-center justify-between text-xl h-14 p-2 bg-quaternary'>
           <div className='flex min-w-[70%] items-center gap-x-10'>
             <p>{status === 'Completed' ? <CheckIcon className='w-8 bg-secondary'/>:<XMarkIcon className='w-8 bg-[#D65DB1]'/>}</p>
@@ -40,7 +46,7 @@ function SingleTodo({id, title, status, filter}) {
             <p><TrashIcon onClick={handleDelete} className='w-8'/></p>
           </div>
         </div>
-      </div>
+      </motion.div>
       </>:''}
     </>
   )
