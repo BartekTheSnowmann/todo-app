@@ -60,7 +60,7 @@ function Modal({ModalType, ToggleModal, EditId}) {
 
   return (
     <>
-      <motion.div className='absolute -top-1/2 -left-1/2 h-screen w-full bg-tertiary/80'
+      <motion.div className='absolute inset-0 h-screen w-full bg-tertiary/80'
       initial={{opacity:0}}
       animate={{opacity:1}}
       exit={{opacity:0}}>
