@@ -1,10 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { AddTodo, EditTodo } from '../features/TodoSlice';
 import AlertPopUp from './AlertPopUp';
 
 function Modal({ModalType, ToggleModal, EditId}) {
+
+    const modalRef = useRef()
+    useEffect(()=>
+    {
+        modalRef?.current.focus()
+    },[])
 
     const [title, setTitle] = useState('')
     const [status, setStatus] = useState('Completed')
@@ -54,7 +60,7 @@ function Modal({ModalType, ToggleModal, EditId}) {
 
   return (
     <>
-      <motion.div className='absolute -top-1/2 -left-1/2 translate-y-1/2 translate-x-1/2 h-screen w-screen bg-tertiary/80'
+      <motion.div className='absolute -top-1/2 -left-1/2 h-full w-full bg-tertiary/80'
       initial={{opacity:0}}
       animate={{opacity:1}}
       exit={{opacity:0}}>
@@ -72,6 +78,7 @@ function Modal({ModalType, ToggleModal, EditId}) {
                 <div>
                     <input
                     className='w-[250px] sm:w-[300px] h-[40px]'
+                    ref={modalRef}
                     onChange={e=>setTitle(e.target.value)}
                     type="text" placeholder='Todo' /> 
                     <div className='py-2'>
