@@ -23,7 +23,7 @@ function App() {
           <h1 className="text-5xl my-4 text-white">TODO APP</h1>
           <div className="flex justify-between">
             <button onClick={ToggleModal} className='bg-quaternary shadow-lg text-white'>Add Todo</button>
-            <select
+            <select className='bg-white'
             onChange={e=>setFilter(e.target.value)}>
               <option value='All'>All</option>
               <option value='Completed'>Completed</option>
